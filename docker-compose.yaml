@@ -6,15 +6,15 @@ services:
     build: .
     container_name: express-app
     ports:
-      - "3000:3000" # Map port 3000 of the host to port 3000 of the container
+      - "3000:3000" 
     environment:
-      - MONGODB_URI=mongodb://mongo:27017/librerie # Connection string for MongoDB
+      - MONGODB_URI=mongodb://mongo:27017/librerie 
     depends_on:
-      - mongo # Ensures MongoDB starts before the app
+      - mongo 
     volumes:
-      - .:/usr/src/app # Mount the current directory to the container
+      - .:/usr/src/app 
     networks:
-      - app-network # Connect to the custom network 'app-network'
+      - app-network 
 
   mongo:
     image: mongo:latest
@@ -22,10 +22,10 @@ services:
     ports:
       - "27018:27017" # Expose MongoDB on port 27018 on the host (MongoDB defaults to 27017)
     volumes:
-      - ./data:/data/db # Persist MongoDB data on the host in the './data' folder
+      - ./data:/data/db 
     networks:
-      - app-network # Connect to the custom network 'app-network'
+      - app-network 
 
 networks:
   app-network:
-    driver: bridge # Use the bridge driver for network isolation
+    driver: bridge 
